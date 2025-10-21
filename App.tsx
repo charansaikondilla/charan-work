@@ -6,6 +6,7 @@ import Projects from './components/Projects.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 import FloatingContactButton from './components/FloatingContactButton.tsx';
+import BackToTopButton from './components/BackToTopButton.tsx';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
       </main>
       <Footer />
       <FloatingContactButton />
+      <BackToTopButton />
     </div>
   );
 };
