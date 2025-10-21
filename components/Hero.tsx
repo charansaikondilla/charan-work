@@ -144,7 +144,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center bg-transparent py-24 md:py-40 overflow-hidden">
+    <section id="home" className="relative h-screen flex flex-col items-center justify-center bg-transparent py-24 md:py-40 overflow-hidden">
        <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-50"></canvas>
 
       <div className="container mx-auto px-6 text-center relative z-10">

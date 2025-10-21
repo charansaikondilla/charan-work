@@ -11,15 +11,13 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen font-sans">
       <Header />
-      <div className="scroll-container">
-        <main>
-          <Hero />
-          <Services />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <main>
+        <Hero />
+        <Services />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
       <FloatingContactButton />
     </div>
   );

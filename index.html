@@ -6,21 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Charan Sai Kondilla - AI & Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Babel Standalone for in-browser TSX/JSX transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-      /* Enables the full-page scroll snap effect */
-      .scroll-container {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        height: 100vh;
-      }
+      /* Removed restrictive scroll-snap container for a smoother, faster free-scrolling experience */
       section {
-        scroll-snap-align: start;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
       }
-       /* Ensure header and footer don't interfere with main content alignment */
+       /* Ensure header doesn't interfere with main content alignment */
       header {
         position: fixed;
         width: 100%;
@@ -31,9 +24,7 @@
       main {
         padding-top: 80px; /* Adjust based on header height */
       }
-      footer {
-        scroll-snap-align: end;
-      }
+      
       @keyframes pulse-glow {
           0%, 100% {
               box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 20px rgba(217, 70, 239, 0.3);
@@ -55,6 +46,7 @@
 </head>
   <body class="bg-gray-900 text-slate-300 bg-gradient-to-br from-[#00000a] via-slate-900 to-gray-900">
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
+    <!-- Use type="text/babel" for Babel to transpile it -->
+    <script type="text/babel" data-type="module" src="index.tsx"></script>
   </body>
 </html>
