@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ChatIcon from './icons/ChatIcon';
+import ChatIcon from './icons/ChatIcon.tsx';
 
 const FloatingContactButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

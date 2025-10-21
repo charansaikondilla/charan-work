@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import ExternalLinkIcon from './icons/ExternalLinkIcon';
-import GithubIcon from './icons/GithubIcon';
-import CheckIcon from './icons/CheckIcon';
+import ExternalLinkIcon from './icons/ExternalLinkIcon.tsx';
+import GithubIcon from './icons/GithubIcon.tsx';
+import CheckIcon from './icons/CheckIcon.tsx';
 
 interface Project {
     id: number;

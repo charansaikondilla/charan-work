@@ -1,7 +1,8 @@
 import React from 'react';
-import WhatsappIcon from './icons/WhatsappIcon';
-import PhoneIcon from './icons/PhoneIcon';
-import EmailIcon from './icons/EmailIcon';
+import WhatsappIcon from './icons/WhatsappIcon.tsx';
+import PhoneIcon from './icons/PhoneIcon.tsx';
+import EmailIcon from './icons/EmailIcon.tsx';
+import useIntersectionObserver from '../hooks/useIntersectionObserver.tsx';
 
 interface ContactInfoProps {
   icon: React.ReactNode;
@@ -23,6 +24,8 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ icon, label, value, href }) =
 );
 
 const Contact: React.FC = () => {
+    const { ref, isVisible } = useIntersectionObserver({ threshold: 0.2 });
+
     const contacts = [
         {
             icon: <WhatsappIcon />,
@@ -46,7 +49,10 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-20 bg-transparent">
-      <div className="container mx-auto px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-6 scroll-animate ${isVisible ? 'is-visible' : ''}`}
+      >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-100">Let's Connect</h2>
           <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ProjectCard from './ProjectCard';
-import ProjectFilters from './ProjectFilters';
+import ProjectCard from './ProjectCard.tsx';
+import ProjectFilters from './ProjectFilters.tsx';
+import useIntersectionObserver from '../hooks/useIntersectionObserver.tsx';
 
 const projectsData = [
     {
@@ -90,6 +91,7 @@ const categories = ['All', 'Full Web App', 'AI Automation', 'AI Chatbot', 'AI Ga
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
@@ -97,7 +99,10 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="py-20 bg-gray-900/70">
-      <div className="container mx-auto px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-6 scroll-animate ${isVisible ? 'is-visible' : ''}`}
+      >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-100">Featured Projects</h2>
           <p className="mt-4 text-lg text-slate-400">A showcase of my work in different domains.</p>

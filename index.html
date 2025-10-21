@@ -9,11 +9,9 @@
     <!-- Add Babel Standalone for in-browser TSX/JSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-      /* Removed restrictive scroll-snap container for a smoother, faster free-scrolling experience */
       section {
         min-height: 100vh;
       }
-       /* Ensure header doesn't interfere with main content alignment */
       header {
         position: fixed;
         width: 100%;
@@ -33,6 +31,29 @@
               box-shadow: 0 0 30px rgba(6, 182, 212, 0.7), 0 0 40px rgba(217, 70, 239, 0.5);
           }
       }
+
+      @keyframes animated-gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      body {
+        background: linear-gradient(-45deg, #00000a, #0f172a, #1e293b, #020617);
+        background-size: 400% 400%;
+        animation: animated-gradient 15s ease infinite;
+      }
+
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .scroll-animate.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     </style>
   <script type="importmap">
 {
@@ -44,9 +65,9 @@
 }
 </script>
 </head>
-  <body class="bg-gray-900 text-slate-300 bg-gradient-to-br from-[#00000a] via-slate-900 to-gray-900">
+  <body class="bg-gray-900 text-slate-300">
     <div id="root"></div>
-    <!-- Use type="text/babel" for Babel to transpile it -->
+    <!-- Use type="text/babel" and ensure all local imports in scripts have the .tsx extension -->
     <script type="text/babel" data-type="module" src="index.tsx"></script>
   </body>
 </html>

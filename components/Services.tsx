@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
-import AutomationIcon from './icons/AutomationIcon';
-import BotIcon from './icons/BotIcon';
-import MenuIcon from './icons/MenuIcon';
-import SocialIcon from './icons/SocialIcon';
+import AutomationIcon from './icons/AutomationIcon.tsx';
+import BotIcon from './icons/BotIcon.tsx';
+import MenuIcon from './icons/MenuIcon.tsx';
+import SocialIcon from './icons/SocialIcon.tsx';
+import useIntersectionObserver from '../hooks/useIntersectionObserver.tsx';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -68,6 +69,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
 };
 
 const Services: React.FC = () => {
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
+
   const services = [
     {
       icon: <AutomationIcon />,
@@ -93,7 +96,10 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="py-20 bg-transparent">
-      <div className="container mx-auto px-6">
+      <div
+        ref={ref}
+        className={`container mx-auto px-6 scroll-animate ${isVisible ? 'is-visible' : ''}`}
+      >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-100">My Offerings</h2>
           <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
